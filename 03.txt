@@ -1,18 +1,25 @@
 6.1) Пример 1:
-     	Перменная concated, хранящая два объединенных множества, 
+     	Переменная concated, хранящая два объединенных множества, 
 	правильнее будет называться concatedSets.
      Пример 2:
-	result - houseArea
+	result - houseArea - площадь дома.
      Пример 3:
-	items - mnemoschemaLibraryItems
+	items - mnemoschemaLibraryIcons - библиотека иконок для мнемосхем.
      Пример 4:
+        arrOfElements - elementsWithMaxVolume - список элементов с максимальным объемом.
      Пример 5:
-
-6.2) linkedListOfChainLinks - ,
-     modelsComposite - 
-     ifcEngineMediator - класс, собирающий в себе объекты, необходимые для 
-                         управления графическим движком для обработки ifc моделей и его плагинов.
-     3
+	arrToLoad - modelsReadyToLoad - список моделей, готовых к загрузке.
+	
+6.2) Пример 1:
+	elementDictionary - словарь элементов, где роль ключа будет играть идентификатор(строка из случайных букв и цифр).
+     Пример 2:
+     	modelsComposite - метод, который собирает "гладкий" список из моделей в дерево, основываясь на значениях полей parent и children.
+     Пример 3: 
+     	ifcEngineMediator - класс, собирающий в себе объекты, необходимые для 
+                            управления графическим движком для обработки ifc моделей и его плагинов.
+     Пример 4: 
+     	FibonacciNumbersSet - множество чисел Фибоначчи.
+     
 6.3) Пример 1: 
 	Имеем класс DeviceModel, который является 
      	абстракцией модели какого-либо устройства, в нем - поля name, description, version, producer,
@@ -20,9 +27,15 @@
      Пример 2:
 	Класс DeviceLabel, в нем поле name - имя.
      Пример 3:
-	Класс ConcatMachine, в нем метод concat, который объединяет два связных списка, 
-	в котором определена переменная concated - результат работы метода. 
+	Класс ConcatMachine, в нем метод concat, который объединяет два связных списка. 
 
-6.4) ratioByYAxisAndViewportHeight - 
-     newElementIdsListForHighlight - 
-     countOfElementsThatShouldBeHidden - 
+6.4) Пример 1:
+	ratioByYAxisAndViewportHeight - YAxisRatioWorkHeight - отношение оси y к высоте рабочей области.
+     Пример 2: 
+     	elementGlobalIdsForHighlight - elemIdsForHighlight - список идентификаторов элементов, которые нужно подсветить.
+     Пример 3:
+     	countOfElementsThatShouldBeHidden - countElementsForHide - счетчик элементов, которые необходимо скрыть.
+     Пример 4:
+     	exists - nowExistsPanels - панели, которые сейчас используются.
+     Пример 5: 
+     	listOfFilteredProjects - filteredProjects - список отфильтрованных элементов.
