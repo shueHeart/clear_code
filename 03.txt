@@ -1,0 +1,28 @@
+6.1) Пример 1:
+     	Перменная concated, хранящая два объединенных множества, 
+	правильнее будет называться concatedSets.
+     Пример 2:
+	result - houseArea
+     Пример 3:
+	items - mnemoschemaLibraryItems
+     Пример 4:
+     Пример 5:
+
+6.2) linkedListOfChainLinks - ,
+     modelsComposite - 
+     ifcEngineMediator - класс, собирающий в себе объекты, необходимые для 
+                         управления графическим движком для обработки ifc моделей и его плагинов.
+     3
+6.3) Пример 1: 
+	Имеем класс DeviceModel, который является 
+     	абстракцией модели какого-либо устройства, в нем - поля name, description, version, producer,
+        которые являются его названием, описанием, версией и производителем соответственно.
+     Пример 2:
+	Класс DeviceLabel, в нем поле name - имя.
+     Пример 3:
+	Класс ConcatMachine, в нем метод concat, который объединяет два связных списка, 
+	в котором определена переменная concated - результат работы метода. 
+
+6.4) ratioByYAxisAndViewportHeight - 
+     newElementIdsListForHighlight - 
+     countOfElementsThatShouldBeHidden - 
