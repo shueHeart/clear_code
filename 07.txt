@@ -1,0 +1,42 @@
+checkIncludes - checkBranchInTreeIncluding
+//проверка существования ветки дерева.
+
+add - addColumnInTable
+// добавить колонку в таблицу.
+
+remove - removeColumnFromTable
+// удалить колонку из таблицы.
+
+save - saveTableConfig 
+// сохранить текущую конфигурацию таблицы.
+
+cancel - cancelLastTableModify
+// отменить последнюю правку таблицы.
+
+share - shareTable 
+// поделиться таблицей.
+
+createClassifierInConfiguration - createClassifier
+// тут убрано лишнее, так как метод лежит в классе Configuration
+// (метод создает классификатор, по сути, справочник).
+
+checkLastUpdate - checkLastTelemetryUpdate
+// метод для запроса последних изменений в телеметрии - в старом варианте непонятно, 
+// чьи именно изменения мы запрашиваем.
+
+checkActive - checkActiveProcesses
+// проверяем активные процессы, снова та же история, 
+// что и с проверкой телеметрии - непонятно, что именно проверяем.
+
+checkUpdates - checkConfigUpdates
+// проверка изменений в конфигурационном файле.
+
+build - buildDeviceData
+// сбор данных устройства из разных таблиц базы данных.
+
+keys - getTelemetryKeys
+// получаем список ключей для телеметрии.
+
+
+
+
