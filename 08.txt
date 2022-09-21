@@ -6,6 +6,7 @@
 	ReferencePoint.fromIntArray(int[]);
      Пример 4: 
 	ReferencePoint.fromJsonString(jsonString);
+	
 3.2) Сейчас в проекте имеется следующая реализация: существует абстрактный класс 
      с именем AbstractDeviceEntity и унаследованный от него класс DeviceEntity, 
      следовательно, будет лучшим решением переименовать абстрактный класс в DeviceEntity,
