@@ -1,0 +1,12 @@
+3.1) Пример 1:
+	DeviceProperties.fromJsonString(jsonString);
+     Пример 2:
+	DeviceProperties.fromResponseData(responseData);
+     Пример 3: 
+	ReferencePoint.fromIntArray(int[]);
+     Пример 4: 
+	ReferencePoint.fromJsonString(jsonString);
+3.2) Сейчас в проекте имеется следующая реализация: существует абстрактный класс 
+     с именем AbstractDeviceEntity и унаследованный от него класс DeviceEntity, 
+     следовательно, будет лучшим решением переименовать абстрактный класс в DeviceEntity,
+     а унаследованный в DeviceEntityImpl.
