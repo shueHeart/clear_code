@@ -1,0 +1,15 @@
+userColumnFamiliName - USER_COLUMN_FAMILY_NAME
+userPgHibernateColumnFamilyName - USER_PG_HIBERNATE_COLUMN_FAMILY_NAME
+userTenantIdProperty - USER_TENANT_ID_PROPERTY
+userCustomerIdProperty - USER_CUSTOMER_ID_PROPERTY
+userEmailProperty - USER_EMAIL_PROPERTY
+userAuthorityProperty - USER_AUTHORITY_PROPERTY
+userFirstNameProperty - USER_FIRST_NAME_PROPERTY
+userLastNameProperty - USER_LAST_NAME_PROPERTY
+userAdditionalInfoProperty - USER_ADDITIONAL_INFO_PROPERTY
+userDeviceColumnNames - USER_DEVICE_COLUMN_NAMES
+userByEmailColumnFamilyName - USER_BY_EMAIL_COLUMN_FAMILY_NAME
+userByTenantAndSearchTextColumnFamilyName - USER_BY_TENANT_AND_SEARCH_TEXT_COLUMN_FAMILY_NAME
+
+// собственно, двенадцать констант, имена которым я 
+// дал неправильно - изменил регистр на заглавный и добавил нижние подчеркивания между словами.
