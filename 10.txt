@@ -1,0 +1,66 @@
+Пример 1:
+	В коде было огромное условие: 
+		exists.length == 2 && deckWidth / 2 <= editablePanel.width && state.orientations.left == 1 && state.orientations.right == 1
+	Его получилось разбить на следующие переменные
+		mustStickTogether = exists.length == 2 && deckWidth / 2 <= editablePanel.width
+		noBarriersToBonding = state.orientations.left == 1 && state.orientations.right == 1
+	Таким образом, условие внутри блока if стало выглядеть так:
+		mustStickTogether && noBarriersToBonding
+
+Пример 2:
+	В коде имелось еще одно достаточно длинное условие:
+		state.mouseOnDeckPosition.x <= deckWidth / 15 || state.mouseOnDeckPosition.x >= deckWidth - (deckWidth / 100 * 10)
+	Его так же удалось разбить на переменные:
+		mouseOnGapZoneLeft = state.mouseOnDeckPosition.x <= deckWidth / 15
+		mouseOnGapZoneRight = state.mouseOnDeckPosition.x >= deckWidth - (deckWidth / 100 * 10)
+	И выглядит оно теперь так:
+		mouseOnGapZoneLeft || mouseOnGapZoneRight
+
+Пример 3:
+	Для локализации пользовательского интерфейса в приложении была применена библиотека i18n для JavaScript.
+
+Пример 4:
+	В коде были две "магических" строки: "UNIT" и "DOUBLE", обозначающие, какой режим панелей сейчас активен - одиночный 
+	или же двойной. Соответственно, использовались они в проверках в довольно многих местах и компонентах, поэтому я объявил
+	константу следующего вида:
+		PANEL_MODE = {
+  			UNIT: "UNIT",
+  			DOUBLE: "DOUBLE"
+		}
+Пример 5:
+	Другой пример с "магическими" строками: "LEFT" и "RIGHT", на этот раз они обозначают расположение панелей пользовательского
+	интерфейса на экране - слева и, соответственно, справа и так же используются во многих местах. Они были вынесены в следующую константу:
+		PANEL_ORIENTATION = {
+  			RIGHT: "RIGHT",
+ 			LEFT: "LEFT"
+		}
+Пример 6:
+	И еще один пример с магическими строками: 
+		TENANT_ADMIN = "TENANT_ADMIN"
+		SYS_ADMIN = "SYS_ADMIN"
+		CUSTOMER_USER = "CUSTOMER_USER"
+	Строки, использующиеся для проверки типа учетной записи пользователя.
+
+Пример 7:
+	Вещественную константу 3.9 удалось округлить до 4.
+
+Пример 8:
+	В алгоритме отрисовки тепловых карт было убрано сравнение вещественных координат точек и переделано на сравнение после их округления до целых чисел.
+
+Пример 9:
+	В алгоритме хэш-функции со случайным множителем была добавлена проверка на переполнение целого числа, и если переполнение произойдет - будет
+	применен алгоритм разрешения коллизий.
+
+Пример 10:
+	z = z / concentrationPoints.length
+	concentrationPoints.length - может быть нулем, следовательно, была добавлена проверка на 0.
+
+Пример 11:
+	sum += r.value / r.distance
+	r.distance - расстояние от точки в пространстве до датчика - может быть нулем, так как используется округление - добавил проверку на ноль.
+
+Пример 12:
+	k1 = (sensorPoint[1] - rastrPoint[1]) / (sensorPoint[0] - rastrPoint[0])
+	Маловероятно, но результат sensorPoint[0] - rastrPoint[0] может быть нулем - так же была добавлена проверка.
+
+		
