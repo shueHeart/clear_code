@@ -1,0 +1,118 @@
+Пример 1:
+	В классе BimService есть переменная revisionsForLoad, объявленная, 
+	но не проинициализированная, так как в дальнейшем в нее попадает 
+	массив - изначально она была инициализирована как массив.
+Пример 2:
+	Имеется следующий метод(JavaScript):
+		private convertFromHexToRGB(hexColor) {
+    			let rgbColor = [0, 0, 0]
+		    	let stringColor = hexColor.replace("#", "")
+    			rgbColor[0] = parseInt(stringColor[0] + stringColor[1], 16)
+    			rgbColor[1] = parseInt(stringColor[2] + stringColor[3], 16)
+	    		rgbColor[2] = parseInt(stringColor[4] + stringColor[5], 16)
+	    		return rgbColor
+  		}
+	массив rgbColor объявляется в самом начале, а работа с ним начинается только через одну строчку,
+	правильнее будет так:
+		private convertFromHexToRGB(hexColor) {
+
+		    	let stringColor = hexColor.replace("#", "")
+
+			let rgbColor = [0, 0, 0]
+    			rgbColor[0] = parseInt(stringColor[0] + stringColor[1], 16)
+    			rgbColor[1] = parseInt(stringColor[2] + stringColor[3], 16)
+	    		rgbColor[2] = parseInt(stringColor[4] + stringColor[5], 16)
+
+	    		return rgbColor
+  		}.
+
+Пример 3:
+	В классе Device, при создании объекта, не инициализировалось поле 
+	isGroup, имеющее тип boolean, что привело бы к ошибке - теперь
+	оно инициализируется в конструкторе и имеет значение false по умолчанию.
+
+Пример 4:
+	В том же классе Device, есть еще одно поле типа boolean с названием isTransformator,
+	тоже не инициализирующееся при создании - теперь тоже false по умолчанию.
+
+Пример 5:
+	В классе DevicePollingOptions есть четыре поля:
+		int pollingInterval
+		int deviceResponseTimeout
+		int connectionAttempts
+		int timeoutBetweenAttempts
+	которые не инициализировались при создании - теперь имеют следующие значения:
+		int pollingInterval = 500
+		int deviceResponseTimeout = 1000
+		int connectionAttempts = 5
+		int timeoutBetweenAttempts = 1000.
+
+Пример 6:
+	Поле String label в классе Asset так же не инициализировалось 
+	сразу - теперь изначально это пустая строка.
+
+Пример 7:
+	Поле String type в том же классе Asset не имело инициализации, 
+	а теперь является пустой строкой по умолчанию.
+
+Пример 8:
+	Следующие поля класса ObjectAttributes не имели начальных значений, 
+	а теперь инициализируются следующим образом:
+		Long dim = 0;
+    		String ver "";
+    		Long pmin = 0;
+    		Long pmax = 0;
+    		Double gt = 0;
+    		Double lt = 0;
+	    	Double st = 0;
+
+Пример 9:
+	Такая же история с полями класса OtherConfiguration, поля теперь инициализируются так:	
+		Integer fwUpdateStrategy = 0;
+    		Integer swUpdateStrategy = 0;
+   		Integer clientOnlyObserveAfterConnect = 0;
+    		PowerMode powerMode = new PowerMode();
+    		Long psmActivityTimer = 0;
+    		Long edrxCycle = 0;
+    		Long pagingTransmissionWindow = 0;
+    		String fwUpdateResource = "";
+    		String swUpdateResource = "";
+   		boolean compositeOperationsSupport = false;
+
+Пример 10:
+	Неинициализированные поля класса TelemetryMappingConfiguration были инициализированы вот так:
+		Map<String, String> keyName = new HashMap<String, String>();
+   		Set<String> observe = new HashSet<String>();
+    		Set<String> attribute = new HashSet<String>();
+    		Set<String> telemetry = new HashSet<String>();
+    		Map<String, ObjectAttributes> attributeLwm2m = new HashMap<ObjectAttributes>();
+
+Пример 11:
+	В классе AlarmConditionFilter было не проинициализировано только 
+	одно поле, а теперь оно выглдядит так:
+		EntityKeyValueType valueType = new EntityKeyValueType();
+
+Пример 12:
+	В классе AlarmRule была добавлена инициализация следующим полям:
+		AlarmCondition alarmCondition = new AlarmCondition();
+    		AlarmSchedule alarmSchedule = new AlarmSchedule();
+    		String alarmDetails = "";
+    		DashboardId dashboardId = new DashboardId();
+
+Пример 13:
+	В классе CustomTimeScheduleItem инициализируются эти поля:
+		boolean enabled = false;
+    		int dayOfWeek = 1;
+    		long startsOn = 0;
+    		long endsOn = 1;
+
+Пример 14:
+	В классе CustomTimeSchedule добавил инициализацию следующим полям:
+		String timezone = "";
+    		List<CustomTimeScheduleItem> items = new ArrayList<List<CustomTimeScheduleItem>();
+
+Пример 15:
+	В классе BasicMqttCredentials проинициализировал эти поля:
+		String clientId = "";
+    		String userName = "";
+   		String password = "";
