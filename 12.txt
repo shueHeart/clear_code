@@ -10,7 +10,7 @@
 	В следующей функции на c++ объект packettype можно инициализировать ближе к месту работы с ним: 
 		void UserLeave(int index, std::string ip) {
 			PlayerCount--;
-			//Packet packettype = P_UserListChange; // эту строку можно перенести ниже
+			//Packet packettype = P_UserListChange; // **** ЭТУ СТРОКУ МОЖНО ПЕРЕНЕСТИ НИЖЕ **** //
 			closesocket(Connections[index]);
 			Connections[index] = INVALID_SOCKET;
 			strcpy(nicnames[index], "null");
@@ -22,7 +22,7 @@
 			json = nicnames;
 			int msg_size = json.dump().size();
 			int bools_size = bools.dump().size();	
-			Packet	packettype = P_UserListChange; // вот сюда
+			Packet	packettype = P_UserListChange; // **** ВОТ СЮДА **** //
 			for (int i = 0; i < size; i++) {
 				if (Connections[i] == INVALID_SOCKET) {
 					continue;
@@ -43,14 +43,14 @@
 	В этой функции такая же история:
 		void ClientHandler(int index, std::string ip) {
 
-			//Packet packettype = P_UserListChange; // строка была тут
+			//Packet packettype = P_UserListChange; // **** СТРОКА БЫЛА ЗДЕСЬ **** //
 			nlohmann::json json{};
 			nlohmann::json bools{};
 			bools = ready;
 			json = nicnames;
 			int msg_size = json.dump().size();
 			int bools_size = bools.dump().size();
-			Packet packettype = P_UserListChange; // перенесена сюда
+			Packet packettype = P_UserListChange; // **** ПЕРЕНЕСЕНА СЮДА **** //
 			for (int i = 0; i < size; i++) {
 				if (Connections[i] == INVALID_SOCKET) {
 					continue;
@@ -76,9 +76,55 @@
 	только схема присваивания ее в конструкторе.
 
 Пример 4:
+	Имеется следующий кусок кода: 
+		log.info("Dumping dashboards ...");
+		//Path dashboardsDump = SqlDbHelper.dumpTableIfExists(conn, DASHBOARD,
+		    new String[]{ID, TENANT_ID, CUSTOMER_ID, TITLE, SEARCH_TEXT, ASSIGNED_CUSTOMERS, CONFIGURATION}, // **** ЭТУ СТРОКУ //
+		    new String[]{"", "", "", "", "", "", ""},							     // МОЖНО ПЕРЕНЕСТИ **** //		
+		    "tb-dashboards", true); 
+		log.info("Dashboards dumped.");
 
+		log.info("Updating schema ...");
+		schemaUpdateFile = Paths.get(installScripts.getDataDir(), "upgrade", "1.4.0", SCHEMA_UPDATE_SQL);
+		loadSql(schemaUpdateFile, conn);
+		log.info("Schema updated.");
+		Path dashboardsDump = SqlDbHelper.dumpTableIfExists(conn, DASHBOARD,
+		    new String[]{ID, TENANT_ID, CUSTOMER_ID, TITLE, SEARCH_TEXT, ASSIGNED_CUSTOMERS, CONFIGURATION}, // **** ВОТ СЮДА **** //
+		    new String[]{"", "", "", "", "", "", ""},
+		    "tb-dashboards", true); 
+		log.info("Restoring dashboards ...");
+		if (dashboardsDump != null) {
+			SqlDbHelper.loadTable(conn, DASHBOARD,
+				new String[]{ID, TENANT_ID, TITLE, SEARCH_TEXT, CONFIGURATION}, dashboardsDump, true);
+			DatabaseHelper.upgradeTo40_assignDashboards(dashboardsDump, dashboardService, true);
+			Files.deleteIfExists(dashboardsDump);
+		}
+		log.info("Dashboards restored.");
 Пример 5:
+	Подобная история, как в предыдущем примере 4:
+		log.info("Dumping entity views ...");
+		//Path entityViewsDump = SqlDbHelper.dumpTableIfExists(conn, ENTITY_VIEWS,
+		    new String[]{ID, ENTITY_ID, ENTITY_TYPE, TENANT_ID, CUSTOMER_ID, TYPE, NAME, KEYS, START_TS, END_TS, SEARCH_TEXT, ADDITIONAL_INFO}, 
+		    new String[]{"", "", "", "", "", "default", "", "", "0", "0", "", ""},		// **** ЭТУ СТРОКУ ПЕРЕНОСИМ НИЖЕ ****//
+		    "tb-entity-views", true);
+		log.info("Entity views dumped.");
 
+		log.info("Updating schema ...");
+		schemaUpdateFile = Paths.get(installScripts.getDataDir(), "upgrade", "2.1.2", SCHEMA_UPDATE_SQL);
+		loadSql(schemaUpdateFile, conn);
+		log.info("Schema updated.");
+		
+		//Path entityViewsDump = SqlDbHelper.dumpTableIfExists(conn, ENTITY_VIEWS,
+		    new String[]{ID, ENTITY_ID, ENTITY_TYPE, TENANT_ID, CUSTOMER_ID, TYPE, NAME, KEYS, START_TS, END_TS, SEARCH_TEXT, ADDITIONAL_INFO}, 
+		    new String[]{"", "", "", "", "", "default", "", "", "0", "0", "", ""},		// **** СЮДА ****//
+		    "tb-entity-views", true);
+		log.info("Restoring entity views ...");
+		if (entityViewsDump != null) {
+			SqlDbHelper.loadTable(conn, ENTITY_VIEW,
+				new String[]{ID, ENTITY_ID, ENTITY_TYPE, TENANT_ID, CUSTOMER_ID, TYPE, NAME, KEYS, START_TS, END_TS, SEARCH_TEXT, ADDITIONAL_INFO}, 				entityViewsDump, true);
+			Files.deleteIfExists(entityViewsDump);
+		}
+		log.info("Entity views restored.");
 Пример 6:
 
 Пример 7:
