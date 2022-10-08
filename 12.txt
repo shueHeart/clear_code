@@ -1,0 +1,102 @@
+/**
+*  Не смог найти достаточно случаев для правок по данному занятию в своем и даже чужом коде, 
+*  но в процессе своей работы/проведения ревью буду пополнять этот файл.
+/*
+
+
+
+
+Пример 1:
+	В следующей функции на c++ объект packettype можно инициализировать ближе к месту работы с ним: 
+		void UserLeave(int index, std::string ip) {
+			PlayerCount--;
+			//Packet packettype = P_UserListChange; // эту строку можно перенести ниже
+			closesocket(Connections[index]);
+			Connections[index] = INVALID_SOCKET;
+			strcpy(nicnames[index], "null");
+			ready[index] = false;
+			PlayerRole[index] = -1;
+			nlohmann::json json{};
+			nlohmann::json bools{};
+			bools = ready;
+			json = nicnames;
+			int msg_size = json.dump().size();
+			int bools_size = bools.dump().size();	
+			Packet	packettype = P_UserListChange; // вот сюда
+			for (int i = 0; i < size; i++) {
+				if (Connections[i] == INVALID_SOCKET) {
+					continue;
+				}
+				send(Connections[i], (char*)&packettype, sizeof(Packet), NULL); // обращаемся к ней тут
+
+				send(Connections[i], (char*)&msg_size, sizeof(int), NULL);
+				send(Connections[i], json.dump().c_str(), msg_size, NULL);
+
+				send(Connections[i], (char*)&bools_size, sizeof(int), NULL);
+				send(Connections[i], bools.dump().c_str(), bools_size, NULL);
+			}
+			std::cout << "Client disconnected:" << ip << std::endl;
+		}
+
+
+Пример 2:
+	В этой функции такая же история:
+		void ClientHandler(int index, std::string ip) {
+
+			//Packet packettype = P_UserListChange; // строка была тут
+			nlohmann::json json{};
+			nlohmann::json bools{};
+			bools = ready;
+			json = nicnames;
+			int msg_size = json.dump().size();
+			int bools_size = bools.dump().size();
+			Packet packettype = P_UserListChange; // перенесена сюда
+			for (int i = 0; i < size; i++) {
+				if (Connections[i] == INVALID_SOCKET) {
+					continue;
+				}
+				send(Connections[i], (char*)&packettype, sizeof(Packet), NULL); // обращаемся к ней тут
+
+				send(Connections[i], (char*)&msg_size, sizeof(int), NULL);
+				send(Connections[i], json.dump().c_str(), msg_size, NULL);
+
+				send(Connections[i], (char*)&bools_size, sizeof(int), NULL);
+				send(Connections[i], bools.dump().c_str(), bools_size, NULL);
+			}
+			// ...
+			// Еще много кода
+			// ...
+		}
+
+Пример 3:
+	В проекте для почти каждого объекта, который необходимо сохранить в базу данных, нужно указывать
+	дату его создания - делается это при помощи метода-сеттера и в конструкторе, то есть, фактически,
+	есть возможность установить дату создания несколько раз, которая, по логике, указывается единожды.
+	Возможность устанавливать дату создания при помощи метода-сеттера мной была вырезана и оставлена 
+	только схема присваивания ее в конструкторе.
+
+Пример 4:
+
+Пример 5:
+
+Пример 6:
+
+Пример 7:
+
+Пример 8:
+
+Пример 9:
+
+Пример 10:
+
+Пример 11:
+
+Пример 12:
+
+Пример 13:
+
+Пример 14:
+
+Пример 15:
+
+
