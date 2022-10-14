@@ -1,0 +1,151 @@
+Пример 1: 
+	Есть следующий цикл, реализованный на JavaScript: 
+
+		for(let i = 0; i < model.length; ++i) {        
+        		if(aliasesTitleList.indexOf(model[i].title, 0) != -1){
+	       		 	model[i].title = model[i].title.substr(1, model[i].title.length - 2)
+          			model[i].title = "notify." + model[i].title
+        		}
+        		if(model[i].model)
+          			model[i].model = this.filterOfModels(model[i].model)
+	    	  	}	
+		}
+	
+	Его можно привести к такому виду: 
+
+		for(let submodel in model) {        
+        		if(aliasesTitleList.indexOf(submodel.title, 0) != -1){
+	  		      	submodel.title = submodel.title.substr(1, submodel.title.length - 2)
+         	 		submodel.title = "notify." + submodel.title
+        		}
+        		if(submodel.model)
+          			submodel.model = this.filterOfModels(submodel.model)
+	      		}	
+		}
+	
+	Или же вообще перенести все в forEach:
+	
+		model.forEach(submodel => {
+			if(aliasesTitleList.indexOf(submodel.title, 0) != -1){
+	        		submodel.title = submodel.title.substr(1, submodel.title.length - 2)
+          			submodel.title = "notify." + submodel.title
+        		}
+        		if(submodel.model)
+          			submodel.model = this.filterOfModels(submodel.model)
+	    	  	}	
+		})
+	
+	И тем самым избавиться от явного обращения к элементам массива по индексам.
+
+Пример 2: 
+	Следующий, такой же пример:
+
+		for (var i = 0; i < elts.length; i++) {
+			if (elts[i].parentNode != null) {
+				elts[i].parentNode.removeChild(elts[i]);
+			}
+		}
+
+	Можно привести вот к такому виду: 
+
+		for (let elt in elts {
+			if (elt .parentNode != null) {
+				elt .parentNode.removeChild(elt);
+			}
+		}
+
+	Либо использовать forEach:
+
+		elts.forEach(elt => {
+			if (elt .parentNode != null) {
+				elt .parentNode.removeChild(elt);
+			}
+		})
+
+Пример 3:
+	Такой цикл:
+
+		for (int i = 0; i < tags.length; ++i) {
+			tag = tags[i].replace(/_/g, ' ')
+		}
+
+	Можно улучшить так:
+
+		for (let tag in tags) {
+			tag = tag.replace(/_/g, ' ')
+		}
+
+	Или использовать forEach:
+
+		tags.forEach(tag => {
+			tag = tag.replace(/_/g, ' ')	
+		})
+Пример 4: 
+	Аналогично: 
+
+		for (var i = 0; i < arr.length; i++) {
+			// Removes duplicates
+			if (hash[arr[i]] == null) {
+				hash[arr[i]] = '1';
+				result.push(arr[i]);
+			}
+		}
+	
+	Либо так: 
+
+		for (let element : arr) {
+			// Removes duplicates
+			if (hash[element] == null) {
+				hash[element] = '1';
+				result.push(element);
+			}
+		}
+	Либо через forEach:
+
+		arr.forEach(element => {
+			// Removes duplicates
+			if (hash[element] == null) {
+				hash[element] = '1';
+				result.push(element);
+			}	
+		})
+
+Пример 5:
+	И еще один пример:
+
+	for (var i = 0; i < desc.length; i++)
+				{
+		var state = this.view.getState(desc[i]);
+					
+		if (state != null && state.shape != null && state.shape.stencil != null && this.stencilHasPlaceholders(state.shape.stencil)) {
+			this.removeStateForCell(desc[i]);
+		}
+		else if (this.isReplacePlaceholders(desc[i])) {
+			this.view.invalidate(desc[i], false, false);
+		}
+	}
+
+	Либо так: 
+
+		for (var d in desc) {
+			var state = this.view.getState(d);
+					
+			if (state != null && state.shape != null && state.shape.stencil != null && this.stencilHasPlaceholders(state.shape.stencil)) {
+				this.removeStateForCell(d);
+			}
+			else if (this.isReplacePlaceholders(d)) {
+				this.view.invalidate(d, false, false);
+			}
+		}
+	Либо через forEach:
+
+		desc.forEach(d => {
+			var state = this.view.getState(d);
+					
+			if (state != null && state.shape != null && state.shape.stencil != null && this.stencilHasPlaceholders(state.shape.stencil)) {
+				this.removeStateForCell(d);
+			}
+			else if (this.isReplacePlaceholders(d)) {
+				this.view.invalidate(d, false, false);
+			}
+		})
