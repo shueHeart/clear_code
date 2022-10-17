@@ -1,0 +1,37 @@
+
+
+3.1).Пример 1:
+		// Если авторизованный пользователь - не администратор, прекращаем выполнение метода
+        	if (!user.getAuthority().equals(Authority.TENANT_ADMIN)) return null;
+
+     Пример 2:
+		//проверяем сущность на существование
+       		checkEntity(widgetsBundle.getId(), widgetsBundle, Resource.WIDGETS_BUNDLE);
+
+     Пример 3:
+		//проверяем, есть ли картинка в сообщении
+        	boolean multipart = (tbEmail.getImages() != null && !tbEmail.getImages().isEmpty());
+
+     Пример 4:
+		//является ли подписка новой
+	        boolean newSubscription = subscriptionsByEntityId
+        	        .computeIfAbsent(subscription.getEntityId(), k -> ConcurrentHashMap.newKeySet()).add(subscription);
+
+     Пример 5:
+		// проверяем существование параметра                                            
+        	checkParameter(DEVICE_ID, strDeviceId);
+
+     Пример 6:
+		// триггерим событие
+           	 onDeviceCreatedOrUpdated(savedDevice, oldDevice, !created);
+
+     Пример 7:
+		// отправляем уведомление об удалении устройства
+	       	sendDeleteNotificationMsg(getTenantId(), deviceId, relatedEdgeIds);
+
+
+
+3.2).    В моем случае подобный пример всего один и исправлен он был уже около двух недель назад:
+      я оставил следующий комметарий пару месяцев назад:  // Так выглядит лень.... TODO переделать на QueryBuilder,
+      собственно, время выделено, а лень побеждена и фильтр теперь работает не как switch : case и вызов огромных CRUD 
+      методов, а реализован как небольшой метод с предикатами.
