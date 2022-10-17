@@ -5,15 +5,15 @@
         	if (!user.getAuthority().equals(Authority.TENANT_ADMIN)) return null;
 
      Пример 2:
-		//проверяем сущность на существование
+		// проверяем сущность на существование
        		checkEntity(widgetsBundle.getId(), widgetsBundle, Resource.WIDGETS_BUNDLE);
 
      Пример 3:
-		//проверяем, есть ли картинка в сообщении
+		// проверяем, есть ли картинка в сообщении
         	boolean multipart = (tbEmail.getImages() != null && !tbEmail.getImages().isEmpty());
 
      Пример 4:
-		//является ли подписка новой
+		// является ли подписка новой
 	        boolean newSubscription = subscriptionsByEntityId
         	        .computeIfAbsent(subscription.getEntityId(), k -> ConcurrentHashMap.newKeySet()).add(subscription);
 
